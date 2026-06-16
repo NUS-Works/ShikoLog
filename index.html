@@ -88,6 +88,40 @@
     </section>
 
     <button class="main-button">
+        <div id="sessionModal" class="modal hidden">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h2>SESSION RECORD</h2>
+            <button id="closeModal">✕</button>
+        </div>
+
+        <label>CATEGORY</label>
+        <input type="text" placeholder="例: 催眠">
+
+        <label>SATISFACTION</label>
+        <select>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option selected>5</option>
+        </select>
+
+        <label>DURATION (MIN)</label>
+        <input type="number" placeholder="30">
+
+        <label>NOTE</label>
+        <textarea rows="4"></textarea>
+
+        <button class="save-button">
+            SAVE SESSION
+        </button>
+
+    </div>
+
+</div>
         START SESSION
     </button>
 
