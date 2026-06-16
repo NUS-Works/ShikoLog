@@ -1,7 +1,6 @@
 const startButton = document.querySelector(".main-button");
 const modal = document.getElementById("sessionModal");
-const historyList =
-document.getElementById("historyList");
+const historyList = document.getElementById("historyList");
 const closeButton = document.getElementById("closeModal");
 
 const saveButton = document.getElementById("saveButton");
@@ -43,6 +42,7 @@ saveButton.addEventListener("click", () => {
         JSON.stringify(sessions)
     );
 
+    updateTotalSessions();
     renderHistory();
 
     categoryInput.value = "";
@@ -58,6 +58,7 @@ saveButton.addEventListener("click", () => {
 function updateTotalSessions() {
     totalSessionsElement.textContent = sessions.length;
 }
+
 function renderHistory() {
 
     if (sessions.length === 0) {
@@ -70,14 +71,12 @@ function renderHistory() {
 
     historyList.innerHTML = "";
 
-    const reversed =
-        [...sessions].reverse();
+    const reversed = [...sessions].reverse();
 
     reversed.forEach(session => {
 
         historyList.innerHTML += `
             <div class="history-item">
-
                 <small>${session.date}</small>
 
                 <strong>${session.category}</strong>
@@ -86,7 +85,6 @@ function renderHistory() {
                     満足度: ${session.satisfaction}
                     / 時間: ${session.duration}分
                 </p>
-
             </div>
         `;
     });
