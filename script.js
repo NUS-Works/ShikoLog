@@ -1,32 +1,17 @@
-const startButton =
-document.querySelector(".main-button");
+const startButton = document.querySelector(".main-button");
+const modal = document.getElementById("sessionModal");
+const closeButton = document.getElementById("closeModal");
 
-const modal =
-document.getElementById("sessionModal");
+const saveButton = document.getElementById("saveButton");
 
-const closeButton =
-document.getElementById("closeModal");
+const totalSessionsElement = document.getElementById("totalSessions");
 
-const saveButton =
-document.getElementById("saveButton");
+const categoryInput = document.getElementById("categoryInput");
+const satisfactionInput = document.getElementById("satisfactionInput");
+const durationInput = document.getElementById("durationInput");
+const noteInput = document.getElementById("noteInput");
 
-const totalSessionsElement =
-document.getElementById("totalSessions");
-
-const categoryInput =
-document.getElementById("categoryInput");
-
-const satisfactionInput =
-document.getElementById("satisfactionInput");
-
-const durationInput =
-document.getElementById("durationInput");
-
-const noteInput =
-document.getElementById("noteInput");
-
-let sessions =
-JSON.parse(localStorage.getItem("sessions")) || [];
+let sessions = JSON.parse(localStorage.getItem("sessions")) || [];
 
 updateTotalSessions();
 
@@ -58,6 +43,7 @@ saveButton.addEventListener("click", () => {
     updateTotalSessions();
 
     categoryInput.value = "";
+    satisfactionInput.value = "5";
     durationInput.value = "";
     noteInput.value = "";
 
@@ -67,8 +53,5 @@ saveButton.addEventListener("click", () => {
 });
 
 function updateTotalSessions() {
-
-    totalSessionsElement.textContent =
-        sessions.length;
-
+    totalSessionsElement.textContent = sessions.length;
 }
