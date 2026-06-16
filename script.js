@@ -1,5 +1,7 @@
 const startButton = document.querySelector(".main-button");
 const modal = document.getElementById("sessionModal");
+const historyList =
+document.getElementById("historyList");
 const closeButton = document.getElementById("closeModal");
 
 const saveButton = document.getElementById("saveButton");
@@ -14,6 +16,7 @@ const noteInput = document.getElementById("noteInput");
 let sessions = JSON.parse(localStorage.getItem("sessions")) || [];
 
 updateTotalSessions();
+renderHistory();
 
 startButton.addEventListener("click", () => {
     modal.classList.remove("hidden");
@@ -40,7 +43,7 @@ saveButton.addEventListener("click", () => {
         JSON.stringify(sessions)
     );
 
-    updateTotalSessions();
+    renderHistory();
 
     categoryInput.value = "";
     satisfactionInput.value = "5";
@@ -54,4 +57,37 @@ saveButton.addEventListener("click", () => {
 
 function updateTotalSessions() {
     totalSessionsElement.textContent = sessions.length;
+}
+function renderHistory() {
+
+    if (sessions.length === 0) {
+
+        historyList.innerHTML =
+            "<p>まだ記録がありません</p>";
+
+        return;
+    }
+
+    historyList.innerHTML = "";
+
+    const reversed =
+        [...sessions].reverse();
+
+    reversed.forEach(session => {
+
+        historyList.innerHTML += `
+            <div class="history-item">
+
+                <small>${session.date}</small>
+
+                <strong>${session.category}</strong>
+
+                <p>
+                    満足度: ${session.satisfaction}
+                    / 時間: ${session.duration}分
+                </p>
+
+            </div>
+        `;
+    });
 }
