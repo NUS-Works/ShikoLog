@@ -47,7 +47,7 @@
         <div class="card">
             <div class="icon">⭐</div>
             <p>総記録数</p>
-            <h3>0</h3>
+            <h3 id="totalSessions">0</h3>
         </div>
 
         <div class="card wide">
@@ -103,10 +103,10 @@
         </div>
 
         <label>CATEGORY</label>
-        <input type="text" placeholder="例: 催眠">
+       <input id="categoryInput" type="text" placeholder="例: 催眠">
 
         <label>SATISFACTION</label>
-        <select>
+        <select id="satisfactionInput">
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -115,12 +115,12 @@
         </select>
 
         <label>DURATION (MIN)</label>
-        <input type="number" placeholder="30">
+        <input id="durationInput" type="number" placeholder="30">
 
         <label>NOTE</label>
-        <textarea rows="4"></textarea>
+        <textarea id="noteInput" rows="4"></textarea>
 
-        <button class="save-button">
+        <button id="saveButton" class="save-button">
             SAVE SESSION
         </button>
 
