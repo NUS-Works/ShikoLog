@@ -54,7 +54,8 @@ saveButton.addEventListener("click", () => {
    updateTotalSessions();
 renderHistory();
 updateAchievements();
-
+showAchievement("FIRST SESSION");
+    
     categoryInput.value = "";
     satisfactionInput.value = "5";
     durationInput.value = "";
