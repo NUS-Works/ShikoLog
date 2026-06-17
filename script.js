@@ -123,3 +123,18 @@ function updateAchievements() {
     }
 
 }
+function showAchievement(name){
+  const popup = document.getElementById("achievementPopup");
+  const text = document.getElementById("achievementText");
+
+  text.innerHTML = `
+  🏆 実績解除！<br>
+  ${name}
+  `;
+
+  popup.classList.add("show");
+
+  setTimeout(()=>{
+    popup.classList.remove("show");
+  },3000);
+}
