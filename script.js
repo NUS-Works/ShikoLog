@@ -11,6 +11,14 @@ const categoryInput = document.getElementById("categoryInput");
 const satisfactionInput = document.getElementById("satisfactionInput");
 const durationInput = document.getElementById("durationInput");
 const noteInput = document.getElementById("noteInput");
+const achievement1 =
+document.getElementById("achievement1");
+
+const achievement7 =
+document.getElementById("achievement7");
+
+const achievement100 =
+document.getElementById("achievement100");
 
 let sessions = JSON.parse(localStorage.getItem("sessions")) || [];
 
