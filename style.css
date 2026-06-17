@@ -419,3 +419,21 @@ header p{
     display:block;
     margin-bottom:8px;
 }
+.achievement-popup {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  background: #222;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 15px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+.achievement-popup.show {
+  opacity: 1;
+  transform: translateY(0);
+}
