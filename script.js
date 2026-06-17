@@ -24,6 +24,7 @@ let sessions = JSON.parse(localStorage.getItem("sessions")) || [];
 
 updateTotalSessions();
 renderHistory();
+updateAchievements();
 
 startButton.addEventListener("click", () => {
     modal.classList.remove("hidden");
@@ -50,8 +51,9 @@ saveButton.addEventListener("click", () => {
         JSON.stringify(sessions)
     );
 
-    updateTotalSessions();
-    renderHistory();
+   updateTotalSessions();
+renderHistory();
+updateAchievements();
 
     categoryInput.value = "";
     satisfactionInput.value = "5";
@@ -96,4 +98,28 @@ function renderHistory() {
             </div>
         `;
     });
+}
+function updateAchievements() {
+
+    if (sessions.length >= 1) {
+
+        achievement1.textContent =
+            "🏆 FIRST SESSION";
+
+    }
+
+    if (sessions.length >= 7) {
+
+        achievement7.textContent =
+            "🏆 7 SESSIONS";
+
+    }
+
+    if (sessions.length >= 100) {
+
+        achievement100.textContent =
+            "🏆 100 SESSIONS";
+
+    }
+
 }
