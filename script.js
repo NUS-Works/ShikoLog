@@ -168,3 +168,10 @@ function updateStreak() {
     streakCount.textContent =
         uniqueDates.length + " DAYS";
 }
+console.log("JS LOADED");
+
+console.log("sessions =", sessions);
+
+console.log("totalSessionsElement =", totalSessionsElement);
+
+console.log("streakCount =", streakCount);
