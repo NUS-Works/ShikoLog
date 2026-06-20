@@ -5,12 +5,24 @@ const closeButton = document.getElementById("closeModal");
 
 const saveButton = document.getElementById("saveButton");
 
-const totalSessionsElement = document.getElementById("totalSessions");
+const totalSessionsElement =
+document.getElementById("totalSessions");
 
-const categoryInput = document.getElementById("categoryInput");
-const satisfactionInput = document.getElementById("satisfactionInput");
-const durationInput = document.getElementById("durationInput");
-const noteInput = document.getElementById("noteInput");
+const streakCount =
+document.getElementById("streakCount");
+
+const categoryInput =
+document.getElementById("categoryInput");
+
+const satisfactionInput =
+document.getElementById("satisfactionInput");
+
+const durationInput =
+document.getElementById("durationInput");
+
+const noteInput =
+document.getElementById("noteInput");
+
 const achievement1 =
 document.getElementById("achievement1");
 
@@ -20,11 +32,13 @@ document.getElementById("achievement7");
 const achievement100 =
 document.getElementById("achievement100");
 
-let sessions = JSON.parse(localStorage.getItem("sessions")) || [];
+let sessions =
+JSON.parse(localStorage.getItem("sessions")) || [];
 
 updateTotalSessions();
 renderHistory();
 updateAchievements();
+updateStreak();
 
 startButton.addEventListener("click", () => {
     modal.classList.remove("hidden");
@@ -51,11 +65,11 @@ saveButton.addEventListener("click", () => {
         JSON.stringify(sessions)
     );
 
-   updateTotalSessions();
-renderHistory();
-updateAchievements();
-showAchievement("FIRST SESSION");
-    
+    updateTotalSessions();
+    renderHistory();
+    updateAchievements();
+    updateStreak();
+
     categoryInput.value = "";
     satisfactionInput.value = "5";
     durationInput.value = "";
@@ -67,7 +81,8 @@ showAchievement("FIRST SESSION");
 });
 
 function updateTotalSessions() {
-    totalSessionsElement.textContent = sessions.length;
+    totalSessionsElement.textContent =
+        sessions.length;
 }
 
 function renderHistory() {
@@ -82,12 +97,14 @@ function renderHistory() {
 
     historyList.innerHTML = "";
 
-    const reversed = [...sessions].reverse();
+    const reversed =
+        [...sessions].reverse();
 
     reversed.forEach(session => {
 
         historyList.innerHTML += `
             <div class="history-item">
+
                 <small>${session.date}</small>
 
                 <strong>${session.category}</strong>
@@ -96,10 +113,12 @@ function renderHistory() {
                     満足度: ${session.satisfaction}
                     / 時間: ${session.duration}分
                 </p>
+
             </div>
         `;
     });
 }
+
 function updateAchievements() {
 
     if (sessions.length >= 1) {
@@ -122,20 +141,30 @@ function updateAchievements() {
             "🏆 100 SESSIONS";
 
     }
-
 }
-function showAchievement(name){
-  const popup = document.getElementById("achievementPopup");
-  const text = document.getElementById("achievementText");
 
-  text.innerHTML = `
-  🏆 実績解除！<br>
-  ${name}
-  `;
+function updateStreak() {
 
-  popup.classList.add("show");
+    if (sessions.length === 0) {
 
-  setTimeout(()=>{
-    popup.classList.remove("show");
-  },3000);
+        streakCount.textContent =
+            "0 DAYS";
+
+        return;
+    }
+
+    const dates = sessions.map(session => {
+
+        const date =
+            new Date(session.date);
+
+        return date.toDateString();
+
+    });
+
+    const uniqueDates =
+        [...new Set(dates)];
+
+    streakCount.textContent =
+        uniqueDates.length + " DAYS";
 }
